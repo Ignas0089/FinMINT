@@ -16,12 +16,14 @@ const Dashboard: React.FC = () => {
   } = mockData;
 
   return (
-    <div>
-      <h2 className="text-xl font-semibold text-primary mb-4">Dashboard</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <TotalBalanceCard label="Total Balance" amount={totalBalance} />
-        <IncomeCard label="Income" amount={income} />
-        <ExpenseCard label="Expenses" amount={expenses} />
+    <div className="space-y-6">
+      <div>
+        <h2 className="mb-4 text-xl font-semibold text-primary">Dashboard</h2>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <TotalBalanceCard totalBalance={dashboardData.totalBalance} />
+          <IncomeCard monthlyIncome={dashboardData.monthlyIncome} />
+          <ExpenseCard monthlyExpenses={dashboardData.monthlyExpenses} />
+        </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
         <RecentTransactions transactions={recentTransactions} />

@@ -16,7 +16,7 @@ const IncomeCard: React.FC = () => {
       </CardHeader>
       <CardContent>
         <p className="text-3xl font-semibold tracking-tight text-emerald-600">
-          ${mockData.income.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+          ${monthlyIncome.toLocaleString(undefined, { minimumFractionDigits: 2 })}
         </p>
       </CardContent>
     </Card>
