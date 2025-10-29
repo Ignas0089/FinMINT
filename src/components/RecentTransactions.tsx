@@ -1,11 +1,9 @@
 import React from 'react';
-import type { Transaction } from '../lib/mockData';
+import { mockData, type Transaction } from '../lib/mockData';
 
-interface RecentTransactionsProps {
-  transactions: Transaction[];
-}
+const RecentTransactions: React.FC = () => {
+  const transactions: Transaction[] = mockData.recentTransactions;
 
-const RecentTransactions: React.FC<RecentTransactionsProps> = ({ transactions }) => {
   return (
     <div className="bg-card p-4 rounded-lg shadow-md mt-4">
       <h3 className="text-lg font-semibold text-card-foreground mb-2">Recent Transactions</h3>

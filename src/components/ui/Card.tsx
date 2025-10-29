@@ -1,35 +1,59 @@
-import React from 'react';
+import * as React from 'react';
+import clsx from 'clsx';
 
-export type TrendDirection = 'up' | 'down';
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export interface TrendIndicator {
-  direction: TrendDirection;
-  value: number;
-  suffix?: string;
-}
+const Card = React.forwardRef<HTMLDivElement, CardProps>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}    className={clsx('rounded-lg border bg-card text-card-foreground shadow-sm', className)}
+    className={clsx(
+      'rounded-lg border border-border bg-card text-card-foreground shadow-sm',
+      className,
+    )}
+    {...props}
+  />
+));
+Card.displayName = 'Card';
 
-export interface SummaryCardProps {
-  label: string;
-  amount: number;
-  trend?: TrendIndicator;
-}
+export interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const Card: React.FC<SummaryCardProps> = ({ label, amount, trend }) => {
-  const trendClassName = trend?.direction === 'down' ? 'text-destructive' : 'text-emerald-500';
+const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={clsx('flex flex-col space-y-1.5 p-4 pb-0', className)}
+    {...props}
+  />
+));
+CardHeader.displayName = 'CardHeader';
 
-  return (
-    <div className="bg-card p-4 rounded-lg shadow-md">
-      <h3 className="text-lg font-semibold text-card-foreground">{label}</h3>
-      <p className="text-2xl text-primary">${amount.toLocaleString()}</p>
-      {trend && (
-        <p className={`text-sm font-medium mt-2 flex items-center ${trendClassName}`}>
-          <span className="mr-1">{trend.direction === 'down' ? '▼' : '▲'}</span>
-          {trend.value}
-          {trend.suffix ?? '%'}
-        </p>
-      )}
-    </div>
-  );
-};
+export interface CardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}
 
+const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(({ className, ...props }, ref) => (
+  <h3 ref={ref} className={clsx('text-2xl font-semibold leading-none tracking-tight', className)} {...props} />
+  <h3
+    ref={ref}
+    className={clsx('text-lg font-semibold leading-none tracking-tight', className)}
+    {...props}
+  />
+));
+CardTitle.displayName = 'CardTitle';
+
+export interface CardDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
+
+const CardDescription = React.forwardRef<HTMLParagraphElement, CardDescriptionProps>(
+  ({ className, ...props }, ref) => (
+    <p ref={ref} className={clsx('text-sm text-muted-foreground', className)} {...props} />
+  ),
+);
+CardDescription.displayName = 'CardDescription';
+
+export interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(({ className, ...props }, ref) => (
+  <div ref={ref} className={clsx('p-6 pt-0', className)} {...props} />
+  <div ref={ref} className={clsx('p-4 pt-2', className)} {...props} />
+));
+CardContent.displayName = 'CardContent';
+
+export { Card, CardHeader, CardTitle, CardDescription, CardContent };
 export default Card;
