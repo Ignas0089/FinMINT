@@ -23,7 +23,10 @@
     "tailwindcss": "^4.1.16",
     "typescript": "~5.9.3",
     "vite": "^7.1.7",
-    "vitest": "^2.1.8"
+    "vitest": "file:vendor/vitest",
+    "@testing-library/react": "file:vendor/@testing-library/react",
+    "@testing-library/jest-dom": "file:vendor/@testing-library/jest-dom",
+    "@testing-library/user-event": "file:vendor/@testing-library/user-event"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.7",

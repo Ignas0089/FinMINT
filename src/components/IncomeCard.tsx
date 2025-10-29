@@ -6,6 +6,9 @@ interface IncomeCardProps {
 }
 
 const IncomeCard: React.FC<IncomeCardProps> = ({ monthlyIncome }) => {
+import { mockData } from '../lib/mockData';
+
+const IncomeCard: React.FC = () => {
   return (
     <Card className="bg-emerald-950/5">
       <CardHeader className="flex flex-row items-start justify-between pb-2">

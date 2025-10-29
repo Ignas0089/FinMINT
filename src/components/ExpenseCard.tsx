@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/Card';
+import Card from './ui/Card';
+import type { SummaryCardProps } from './ui/Card';
 
 interface ExpenseCardProps {
   monthlyExpenses: number;
@@ -24,6 +25,13 @@ const ExpenseCard: React.FC<ExpenseCardProps> = ({ monthlyExpenses }) => {
       </CardContent>
     </Card>
   );
+type ExpenseCardProps = Omit<SummaryCardProps, 'label'> & {
+  label?: string;
 };
 
+const ExpenseCard: React.FC<ExpenseCardProps> = ({ label = 'Expenses', amount, trend }) => (
+  <Card label={label} amount={amount} trend={trend} />
+);
+
 export default ExpenseCard;
+export type { ExpenseCardProps };

@@ -1,13 +1,23 @@
 import React from 'react';
 import { mockData, type DashboardData } from '../lib/mockData';
+import { mockData } from '../lib/mockData';
 import TotalBalanceCard from './TotalBalanceCard';
 import IncomeCard from './IncomeCard';
 import ExpenseCard from './ExpenseCard';
 import RecentTransactions from './RecentTransactions';
 import SpendingByCategory from './SpendingByCategory';
 
+const formatCurrency = (value: number) =>
+  new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+
 const Dashboard: React.FC = () => {
-  const dashboardData: DashboardData = mockData;
+  const {
+    totalBalance,
+    income,
+    expenses,
+    recentTransactions,
+    spendingByCategory,
+  } = mockData;
 
   return (
     <div className="space-y-6">
@@ -19,9 +29,9 @@ const Dashboard: React.FC = () => {
           <ExpenseCard monthlyExpenses={dashboardData.monthlyExpenses} />
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <RecentTransactions />
-        <SpendingByCategory />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <RecentTransactions transactions={recentTransactions} />
+        <SpendingByCategory categories={spendingByCategory} />
       </div>
     </div>
   );
