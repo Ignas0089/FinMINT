@@ -1,5 +1,5 @@
 import React from 'react';
-import { mockData, type DashboardData } from '../lib/mockData';
+import { mockData } from '../lib/mockData';
 import TotalBalanceCard from './TotalBalanceCard';
 import IncomeCard from './IncomeCard';
 import ExpenseCard from './ExpenseCard';
@@ -7,24 +7,25 @@ import RecentTransactions from './RecentTransactions';
 import SpendingByCategory from './SpendingByCategory';
 
 const Dashboard: React.FC = () => {
-  const dashboardData: DashboardData = mockData;
+  const {
+    totalBalance,
+    income,
+    expenses,
+    recentTransactions,
+    spendingByCategory,
+  } = mockData;
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h2 className="text-xl font-semibold text-primary mb-2">Dashboard</h2>
-        <p className="text-sm text-muted-foreground">
-          Overview of your finances with {dashboardData.recentTransactions.length} recent transactions.
-        </p>
-        <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <TotalBalanceCard />
-          <IncomeCard />
-          <ExpenseCard />
-        </div>
+    <div>
+      <h2 className="text-xl font-semibold text-primary mb-4">Dashboard</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <TotalBalanceCard label="Total Balance" amount={totalBalance} />
+        <IncomeCard label="Income" amount={income} />
+        <ExpenseCard label="Expenses" amount={expenses} />
       </div>
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <RecentTransactions />
-        <SpendingByCategory />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <RecentTransactions transactions={recentTransactions} />
+        <SpendingByCategory categories={spendingByCategory} />
       </div>
     </div>
   );
