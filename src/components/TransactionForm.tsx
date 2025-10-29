@@ -2,13 +2,6 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 
 const TransactionForm: React.FC = () => {
   const [description, setDescription] = useState('');
@@ -57,15 +50,15 @@ const TransactionForm: React.FC = () => {
       </div>
       <div>
         <Label htmlFor="type">Type</Label>
-        <Select value={type} onValueChange={setType}>
-          <SelectTrigger>
-            <SelectValue placeholder="Select a type" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="expense">Expense</SelectItem>
-            <SelectItem value="income">Income</SelectItem>
-          </SelectContent>
-        </Select>
+        <select
+          id="type"
+          value={type}
+          onChange={(event) => setType(event.target.value)}
+          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          <option value="expense">Expense</option>
+          <option value="income">Income</option>
+        </select>
       </div>
       <Button type="submit" className="w-full">
         Add Transaction

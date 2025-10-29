@@ -1,5 +1,4 @@
 import React from 'react';
-import TransactionForm from './components/TransactionForm';
 import Dashboard from './components/Dashboard';
 
 const App: React.FC = () => {
