@@ -1,4 +1,6 @@
 import React from 'react';
+import { mockData } from '../lib/mockData';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/Card';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/Card';
 
 interface IncomeCardProps {

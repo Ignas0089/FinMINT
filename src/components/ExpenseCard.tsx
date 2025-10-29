@@ -1,4 +1,8 @@
 import React from 'react';
+import { mockData } from '../lib/mockData';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/Card';
+
+const ExpenseCard: React.FC = () => {
 import Card from './ui/Card';
 import type { SummaryCardProps } from './ui/Card';
 
