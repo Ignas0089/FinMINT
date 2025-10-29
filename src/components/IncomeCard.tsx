@@ -1,5 +1,11 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/Card';
+
+interface IncomeCardProps {
+  monthlyIncome: number;
+}
+
+const IncomeCard: React.FC<IncomeCardProps> = ({ monthlyIncome }) => {
 import { mockData } from '../lib/mockData';
 
 const IncomeCard: React.FC = () => {

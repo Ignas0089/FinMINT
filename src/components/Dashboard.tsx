@@ -1,4 +1,5 @@
 import React from 'react';
+import { mockData, type DashboardData } from '../lib/mockData';
 import { mockData } from '../lib/mockData';
 import TotalBalanceCard from './TotalBalanceCard';
 import IncomeCard from './IncomeCard';
