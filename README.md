@@ -99,23 +99,25 @@ If you'd like to see this in action, I demonstrated it on [Claire Vo's "How I AI
 
 ## 📊 FinMINT Dashboard Overview
 
-The FinMINT demo app renders a financial dashboard located at `src/components/Dashboard.tsx`. The layout is composed of:
+The FinMINT demo app now renders the financial dashboard with lightweight vanilla JavaScript. The rendering entry-point lives in `src/modules/dashboard.js`, which exposes `renderDashboard` (used by `src/main.js`) and `getDashboardMarkup` (used in the unit tests).
 
-* **Summary metric cards** (`TotalBalanceCard`, `IncomeCard`, and `ExpenseCard`) displayed in a responsive grid at the top of the page.
-* **Recent activity** via `RecentTransactions`, listing the five most recent income or expense items.
-* **Spending insights** from `SpendingByCategory`, which summarizes monthly costs per category.
+The dashboard layout is composed of:
 
-All of these components source their values from the mock dataset defined in `src/lib/mockData.ts`. The `mockData` object implements the `DashboardData` interface so the cards receive consistent values for balance, income, expenses, transaction history, and category totals.
+* **Summary metric cards** rendered from the `mockData.totalBalance`, `mockData.monthlyIncome`, and `mockData.monthlyExpenses` values.
+* **Recent activity**, generated from `mockData.recentTransactions` and formatted with helpers in `src/modules/formatters.js`.
+* **Spending insights**, sourced from `mockData.spendingByCategory` and displayed as a simple list.
+
+All static values live in `src/modules/mockData.js`, keeping the demo portable and independent from any external API calls or npm packages.
 
 ### 🔄 Updating Mock Dashboard Data
 
-If you need to adjust the sample figures shown in the dashboard, edit `src/lib/mockData.ts` and update the `mockData` object.
+Edit `src/modules/mockData.js` to update the sample figures shown in the dashboard.
 
-1. Modify the numeric fields (`totalBalance`, `income`, `expenses`) to the new values you want to display on the summary cards.
+1. Modify the numeric fields (`totalBalance`, `monthlyIncome`, `monthlyExpenses`) to control the headline metrics.
 2. Update the `recentTransactions` array to add, remove, or edit transaction entries. Each transaction should include an `id`, `name`, ISO-formatted `date`, and signed `amount` (positive for income, negative for expenses).
-3. Revise the `spendingByCategory` array to reflect the categories and amounts you want represented in the chart component.
+3. Revise the `spendingByCategory` array to reflect the categories and amounts you want represented in the insights section.
 
-After saving your changes, restart or refresh the development server (if it is running) to view the updated mock data in the dashboard.
+After saving your changes, re-run `npm run dev` (or refresh the browser if the dev server is already running) to see the new values reflected in the UI.
 
 ## 🌟 Benefits
 
