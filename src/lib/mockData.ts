@@ -12,16 +12,16 @@ export interface CategorySpending {
 
 export interface DashboardData {
   totalBalance: number;
-  income: number;
-  expenses: number;
+  monthlyIncome: number;
+  monthlyExpenses: number;
   recentTransactions: Transaction[];
   spendingByCategory: CategorySpending[];
 }
 
 export const mockData: DashboardData = {
   totalBalance: 12345.67,
-  income: 4500.0,
-  expenses: 1250.0,
+  monthlyIncome: 4500.0,
+  monthlyExpenses: 1250.0,
   recentTransactions: [
     { id: 1, name: 'Spotify', date: '2024-07-28', amount: -10.99 },
     { id: 2, name: 'Salary', date: '2024-07-25', amount: 4500.0 },
