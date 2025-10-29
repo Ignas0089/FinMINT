@@ -7,10 +7,11 @@ interface IncomeCardProps {
 
 const IncomeCard: React.FC<IncomeCardProps> = ({ monthlyIncome }) => {
 import { mockData } from '../lib/mockData';
+import { formatCurrency } from '../lib/formatters';
 
 const IncomeCard: React.FC = () => {
   return (
-    <Card className="bg-emerald-950/5">
+    <Card className="bg-emerald-50">
       <CardHeader className="flex flex-row items-start justify-between pb-2">
         <div>
           <CardTitle className="text-emerald-700">Income</CardTitle>

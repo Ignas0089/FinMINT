@@ -8,7 +8,7 @@ interface ExpenseCardProps {
 
 const ExpenseCard: React.FC<ExpenseCardProps> = ({ monthlyExpenses }) => {
   return (
-    <Card className="bg-rose-950/5">
+    <Card className="bg-rose-50">
       <CardHeader className="flex flex-row items-start justify-between pb-2">
         <div>
           <CardTitle className="text-rose-700">Expenses</CardTitle>

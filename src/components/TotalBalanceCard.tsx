@@ -7,13 +7,13 @@ interface TotalBalanceCardProps {
 
 const TotalBalanceCard: React.FC<TotalBalanceCardProps> = ({ totalBalance }) => {
   return (
-    <Card className="bg-card/95">
+    <Card className="bg-primary/5">
       <CardHeader className="flex flex-row items-start justify-between pb-2">
         <div>
-          <CardTitle>Total Balance</CardTitle>
+          <CardTitle className="text-primary">Total Balance</CardTitle>
           <CardDescription>Available across all accounts</CardDescription>
         </div>
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/15 text-2xl">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/15 text-2xl text-primary">
           💼
         </div>
       </CardHeader>
