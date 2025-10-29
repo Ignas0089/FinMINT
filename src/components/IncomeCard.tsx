@@ -1,11 +1,8 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/Card';
+import { mockData } from '../lib/mockData';
 
-interface IncomeCardProps {
-  monthlyIncome: number;
-}
-
-const IncomeCard: React.FC<IncomeCardProps> = ({ monthlyIncome }) => {
+const IncomeCard: React.FC = () => {
   return (
     <Card className="bg-emerald-950/5">
       <CardHeader className="flex flex-row items-start justify-between pb-2">
