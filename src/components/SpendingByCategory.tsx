@@ -1,21 +1,29 @@
 import React from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from './ui/Card';
 import { mockData, type CategorySpending } from '../lib/mockData';
+import { formatCurrency } from '../lib/formatters';
 
 const SpendingByCategory: React.FC = () => {
   const categories: CategorySpending[] = mockData.spendingByCategory;
 
   return (
-    <div className="bg-card p-4 rounded-lg shadow-md mt-4">
-      <h3 className="text-lg font-semibold text-card-foreground mb-2">Spending by Category</h3>
-      <ul>
-        {categories.map((category) => (
-          <li key={category.category} className="flex justify-between items-center py-2">
-            <p className="font-medium">{category.category}</p>
-            <p className="font-semibold">${category.amount.toLocaleString()}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle>Spending by Category</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <ul className="space-y-3">
+          {categories.map((category) => (
+            <li key={category.category} className="flex items-center justify-between">
+              <p className="font-medium text-foreground">{category.category}</p>
+              <p className="text-sm font-semibold text-muted-foreground">
+                {formatCurrency(category.amount)}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </CardContent>
+    </Card>
   );
 };
 
