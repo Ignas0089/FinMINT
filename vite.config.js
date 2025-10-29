@@ -11,4 +11,8 @@ export default defineConfig({
       plugins: [tailwindcss, autoprefixer],
     },
   },
+  test: {
+    environment: "jsdom",
+    setupFiles: ["./src/setupTests.ts"],
+  },
 });
