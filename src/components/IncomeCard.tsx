@@ -1,28 +1,11 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/Card';
-
-interface IncomeCardProps {
-  income: number;
-  className?: string;
-}
-
-const formatCurrency = (value: number) =>
-  new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
-
-const IncomeCard: React.FC<IncomeCardProps> = ({ income, className }) => {
-  return (
-    <Card className={className}>
-      <CardHeader>
-        <CardTitle>Income</CardTitle>
-        <CardDescription>Money coming into your accounts</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p className="text-3xl font-semibold text-emerald-500">{formatCurrency(income)}</p>
 import { mockData } from '../lib/mockData';
+import { formatCurrency } from '../lib/formatters';
 
 const IncomeCard: React.FC = () => {
   return (
-    <Card className="bg-emerald-950/5">
+    <Card className="bg-emerald-50">
       <CardHeader className="flex flex-row items-start justify-between pb-2">
         <div>
           <CardTitle className="text-emerald-700">Income</CardTitle>
@@ -34,7 +17,7 @@ const IncomeCard: React.FC = () => {
       </CardHeader>
       <CardContent>
         <p className="text-3xl font-semibold tracking-tight text-emerald-600">
-          ${mockData.income.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+          {formatCurrency(mockData.income)}
         </p>
       </CardContent>
     </Card>

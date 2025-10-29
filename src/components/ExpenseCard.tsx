@@ -1,28 +1,11 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/Card';
-
-interface ExpenseCardProps {
-  expenses: number;
-  className?: string;
-}
-
-const formatCurrency = (value: number) =>
-  new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
-
-const ExpenseCard: React.FC<ExpenseCardProps> = ({ expenses, className }) => {
-  return (
-    <Card className={className}>
-      <CardHeader>
-        <CardTitle>Expenses</CardTitle>
-        <CardDescription>Money going out of your accounts</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p className="text-3xl font-semibold text-destructive">{formatCurrency(expenses)}</p>
 import { mockData } from '../lib/mockData';
+import { formatCurrency } from '../lib/formatters';
 
 const ExpenseCard: React.FC = () => {
   return (
-    <Card className="bg-rose-950/5">
+    <Card className="bg-rose-50">
       <CardHeader className="flex flex-row items-start justify-between pb-2">
         <div>
           <CardTitle className="text-rose-700">Expenses</CardTitle>
@@ -34,7 +17,7 @@ const ExpenseCard: React.FC = () => {
       </CardHeader>
       <CardContent>
         <p className="text-3xl font-semibold tracking-tight text-rose-600">
-          ${mockData.expenses.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+          {formatCurrency(mockData.expenses)}
         </p>
       </CardContent>
     </Card>
