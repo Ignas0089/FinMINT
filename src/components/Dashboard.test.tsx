@@ -1,40 +1,41 @@
-import { render, screen, within } from '@testing-library/react';
 import React from 'react';
+import { render, screen } from '@testing-library/react';
+import { describe, it, expect } from 'vitest';
 import Dashboard from './Dashboard';
 import { mockData } from '../lib/mockData';
 
 describe('Dashboard', () => {
-  it('renders summary cards, recent transactions, and spending categories', () => {
+  it('renders the summary cards', () => {
     render(<Dashboard />);
 
     expect(screen.getByText('Total Balance')).toBeInTheDocument();
     expect(screen.getByText('Income')).toBeInTheDocument();
     expect(screen.getByText('Expenses')).toBeInTheDocument();
 
-    const transactionsSection = screen.getByRole('heading', {
-      name: /recent transactions/i,
-      level: 3,
-    }).parentElement;
-    expect(transactionsSection).not.toBeNull();
+    expect(
+      screen.getByText(`$${mockData.totalBalance.toLocaleString()}`)
+    ).toBeInTheDocument();
+    expect(screen.getByText(`$${mockData.income.toLocaleString()}`)).toBeInTheDocument();
+    expect(screen.getByText(`$${mockData.expenses.toLocaleString()}`)).toBeInTheDocument();
+  });
 
-    const transactionItems = within(transactionsSection as HTMLElement).getAllByRole('listitem');
-    expect(transactionItems).toHaveLength(mockData.recentTransactions.length);
+  it('renders the recent transactions list', () => {
+    render(<Dashboard />);
 
-    mockData.recentTransactions.forEach((transaction) => {
+    for (const transaction of mockData.recentTransactions) {
       expect(screen.getByText(transaction.name)).toBeInTheDocument();
-    });
+      expect(screen.getByText(transaction.date)).toBeInTheDocument();
+    }
+  });
 
-    const categoriesSection = screen.getByRole('heading', {
-      name: /spending by category/i,
-      level: 3,
-    }).parentElement;
-    expect(categoriesSection).not.toBeNull();
+  it('renders spending categories', () => {
+    render(<Dashboard />);
 
-    const categoryItems = within(categoriesSection as HTMLElement).getAllByRole('listitem');
-    expect(categoryItems).toHaveLength(mockData.spendingByCategory.length);
-
-    mockData.spendingByCategory.forEach((category) => {
+    for (const category of mockData.spendingByCategory) {
       expect(screen.getByText(category.category)).toBeInTheDocument();
-    });
+      expect(
+        screen.getByText(`$${category.amount.toLocaleString()}`)
+      ).toBeInTheDocument();
+    }
   });
 });
