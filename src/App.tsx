@@ -1,5 +1,6 @@
 import React from 'react';
 import TransactionForm from './components/TransactionForm';
+import Dashboard from './components/Dashboard';
 
 const App: React.FC = () => {
   return (
@@ -8,7 +9,7 @@ const App: React.FC = () => {
         <h1 className="text-2xl font-semibold text-primary">FinGlow</h1>
       </header>
       <main className="p-4">
-        <TransactionForm />
+        <Dashboard />
       </main>
     </div>
   );
