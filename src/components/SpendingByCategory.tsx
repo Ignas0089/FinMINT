@@ -1,11 +1,9 @@
 import React from 'react';
-import type { CategorySpending } from '../lib/mockData';
+import { mockData, type CategorySpending } from '../lib/mockData';
 
-interface SpendingByCategoryProps {
-  categories: CategorySpending[];
-}
+const SpendingByCategory: React.FC = () => {
+  const categories: CategorySpending[] = mockData.spendingByCategory;
 
-const SpendingByCategory: React.FC<SpendingByCategoryProps> = ({ categories }) => {
   return (
     <div className="bg-card p-4 rounded-lg shadow-md mt-4">
       <h3 className="text-lg font-semibold text-card-foreground mb-2">Spending by Category</h3>
