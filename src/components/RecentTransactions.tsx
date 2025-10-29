@@ -1,12 +1,14 @@
 import React from 'react';
-import { mockData } from '../lib/mockData';
+import { mockData, type Transaction } from '../lib/mockData';
 
 const RecentTransactions: React.FC = () => {
+  const transactions: Transaction[] = mockData.recentTransactions;
+
   return (
     <div className="bg-card p-4 rounded-lg shadow-md mt-4">
       <h3 className="text-lg font-semibold text-card-foreground mb-2">Recent Transactions</h3>
       <ul>
-        {mockData.recentTransactions.map((transaction) => (
+        {transactions.map((transaction) => (
           <li key={transaction.id} className="flex justify-between items-center py-2 border-b last:border-b-0">
             <div>
               <p className="font-medium">{transaction.name}</p>
