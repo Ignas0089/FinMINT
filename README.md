@@ -95,7 +95,27 @@ If you'd like to see this in action, I demonstrated it on [Claire Vo's "How I AI
 
 * **`create-prd.md`**: Guides the AI in generating a Product Requirement Document for your feature.
 * **`generate-tasks.md`**: Takes a PRD markdown file as input and helps the AI break it down into a detailed, step-by-step implementation task list.
-* **`process-task-list.md`**: Instructs the AI on how to process the generated task list, tackling one task at a time and waiting for your approval before proceeding. (This file also contains logic for the AI to mark tasks as complete).
+* **`process-task-list.md`**: Instructs the AI on how to process the generated task list, tackling one task at a time and waiting for your approval before proceeding. (This file also contains logic for the AI to mark tasks as complete.)
+
+## 📊 FinMINT Dashboard Overview
+
+The FinMINT demo app renders a financial dashboard located at `src/components/Dashboard.tsx`. The layout is composed of:
+
+* **Summary metric cards** (`TotalBalanceCard`, `IncomeCard`, and `ExpenseCard`) displayed in a responsive grid at the top of the page.
+* **Recent activity** via `RecentTransactions`, listing the five most recent income or expense items.
+* **Spending insights** from `SpendingByCategory`, which summarizes monthly costs per category.
+
+All of these components source their values from the mock dataset defined in `src/lib/mockData.ts`. The `mockData` object implements the `DashboardData` interface so the cards receive consistent values for balance, income, expenses, transaction history, and category totals.
+
+### 🔄 Updating Mock Dashboard Data
+
+If you need to adjust the sample figures shown in the dashboard, edit `src/lib/mockData.ts` and update the `mockData` object.
+
+1. Modify the numeric fields (`totalBalance`, `income`, `expenses`) to the new values you want to display on the summary cards.
+2. Update the `recentTransactions` array to add, remove, or edit transaction entries. Each transaction should include an `id`, `name`, ISO-formatted `date`, and signed `amount` (positive for income, negative for expenses).
+3. Revise the `spendingByCategory` array to reflect the categories and amounts you want represented in the chart component.
+
+After saving your changes, restart or refresh the development server (if it is running) to view the updated mock data in the dashboard.
 
 ## 🌟 Benefits
 
