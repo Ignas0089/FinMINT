@@ -5,7 +5,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(({ className, ...props }, ref) => (
   <div
-    ref={ref}
+    ref={ref}    className={clsx('rounded-lg border bg-card text-card-foreground shadow-sm', className)}
     className={clsx(
       'rounded-lg border border-border bg-card text-card-foreground shadow-sm',
       className,
@@ -29,6 +29,7 @@ CardHeader.displayName = 'CardHeader';
 export interface CardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}
 
 const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(({ className, ...props }, ref) => (
+  <h3 ref={ref} className={clsx('text-2xl font-semibold leading-none tracking-tight', className)} {...props} />
   <h3
     ref={ref}
     className={clsx('text-lg font-semibold leading-none tracking-tight', className)}
@@ -49,8 +50,10 @@ CardDescription.displayName = 'CardDescription';
 export interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(({ className, ...props }, ref) => (
+  <div ref={ref} className={clsx('p-6 pt-0', className)} {...props} />
   <div ref={ref} className={clsx('p-4 pt-2', className)} {...props} />
 ));
 CardContent.displayName = 'CardContent';
 
 export { Card, CardHeader, CardTitle, CardDescription, CardContent };
+export default Card;
