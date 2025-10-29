@@ -6,6 +6,9 @@ import ExpenseCard from './ExpenseCard';
 import RecentTransactions from './RecentTransactions';
 import SpendingByCategory from './SpendingByCategory';
 
+const formatCurrency = (value: number) =>
+  new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+
 const Dashboard: React.FC = () => {
   const {
     totalBalance,
