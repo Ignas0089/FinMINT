@@ -1,4 +1,5 @@
 import React from 'react';
+import TransactionForm from './components/TransactionForm';
 
 const App: React.FC = () => {
   return (
@@ -7,7 +8,7 @@ const App: React.FC = () => {
         <h1 className="text-2xl font-semibold text-primary">FinGlow</h1>
       </header>
       <main className="p-4">
-        {/* Cards will go here */}
+        <TransactionForm />
       </main>
     </div>
   );
