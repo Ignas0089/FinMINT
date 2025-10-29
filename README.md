@@ -6,6 +6,18 @@ Stop wrestling with monolithic AI requests and start guiding your AI collaborato
 
 ## ✨ The Core Idea
 
+### Project scripts
+
+The dashboard in this repository is now a dependency-free static application. Use the following commands to work with it:
+
+```bash
+npm run lint   # verifies that source files are free from trailing whitespace
+npm run build  # copies the static assets into dist/ for deployment
+npm run test   # executes the Node.js test suite built with node:test
+```
+
+These scripts do not require installing npm packages, which keeps the workflow reliable even in restricted network environments.
+
 Building complex features with AI can sometimes feel like a black box. This workflow aims to bring structure, clarity, and control to the process by:
 
 1. **Defining Scope:** Clearly outlining what needs to be built with a Product Requirement Document (PRD).

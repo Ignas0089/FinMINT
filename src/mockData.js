@@ -1,24 +1,4 @@
-export interface Transaction {
-  id: number;
-  name: string;
-  date: string;
-  amount: number;
-}
-
-export interface CategorySpending {
-  category: string;
-  amount: number;
-}
-
-export interface DashboardData {
-  totalBalance: number;
-  income: number;
-  expenses: number;
-  recentTransactions: Transaction[];
-  spendingByCategory: CategorySpending[];
-}
-
-export const mockData: DashboardData = {
+export const mockData = {
   totalBalance: 12345.67,
   income: 4500.0,
   expenses: 1250.0,

@@ -1,0 +1,234 @@
+:root {
+  --background: #f4f6fb;
+  --foreground: #1a1c1f;
+  --primary: #1f7a62;
+  --accent-income: #1f7a62;
+  --accent-expense: #b83232;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --border-radius: 12px;
+  --shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+header {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 1.5rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  margin: 0 0 1.5rem;
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.cards-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.card__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.card__description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.card__value {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.card__badge {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.25rem;
+  background: rgba(31, 122, 98, 0.1);
+  color: var(--accent-income);
+}
+
+.card--income .card__value {
+  color: var(--accent-income);
+}
+
+.card--expense .card__badge {
+  background: rgba(184, 50, 50, 0.12);
+  color: var(--accent-expense);
+}
+
+.card--expense .card__value {
+  color: var(--accent-expense);
+}
+
+.card--summary .card__badge {
+  background: rgba(31, 122, 98, 0.12);
+}
+
+.data-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .data-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.panel {
+  background: var(--card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+
+.panel h3 {
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.transactions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.transaction {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.transaction:last-child {
+  border-bottom: none;
+}
+
+.transaction__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.transaction__name {
+  font-weight: 600;
+}
+
+.transaction__date {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.transaction__amount {
+  font-weight: 600;
+}
+
+.transaction__amount--positive {
+  color: var(--accent-income);
+}
+
+.transaction__amount--negative {
+  color: var(--accent-expense);
+}
+
+.categories {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+.category__label {
+  color: var(--muted);
+}
+
+.category__value {
+  font-size: 1rem;
+}
+
+@media (max-width: 640px) {
+  header {
+    padding: 1.25rem 1.5rem;
+  }
+
+  main {
+    padding: 1.5rem;
+  }
+}
