@@ -1,8 +1,11 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/Card';
-import { mockData } from '../lib/mockData';
 
-const TotalBalanceCard: React.FC = () => {
+interface TotalBalanceCardProps {
+  totalBalance: number;
+}
+
+const TotalBalanceCard: React.FC<TotalBalanceCardProps> = ({ totalBalance }) => {
   return (
     <Card className="bg-card/95">
       <CardHeader className="flex flex-row items-start justify-between pb-2">
@@ -16,7 +19,7 @@ const TotalBalanceCard: React.FC = () => {
       </CardHeader>
       <CardContent>
         <p className="text-3xl font-semibold tracking-tight text-primary">
-          ${mockData.totalBalance.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+          ${totalBalance.toLocaleString(undefined, { minimumFractionDigits: 2 })}
         </p>
       </CardContent>
     </Card>
