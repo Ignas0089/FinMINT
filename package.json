@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest"
   },
   "devDependencies": {
     "@types/react": "^19.2.2",
@@ -15,7 +16,11 @@
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.16",
     "typescript": "~5.9.3",
-    "vite": "^7.1.7"
+    "vite": "^7.1.7",
+    "vitest": "file:vendor/vitest",
+    "@testing-library/react": "file:vendor/@testing-library/react",
+    "@testing-library/jest-dom": "file:vendor/@testing-library/jest-dom",
+    "@testing-library/user-event": "file:vendor/@testing-library/user-event"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.16",
